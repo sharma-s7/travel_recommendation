@@ -1,4 +1,4 @@
-# 🌍 Roava — Frontend Web App
+# 🌍 Roava — Evokes Roaming & Travels
 
 **Roava** is a lightweight travel booking interface built using pure HTML, CSS, and JavaScript. It allows users to search for destinations, learn about the platform, and get in touch via a contact form—all wrapped in a responsive and visually appealing design.
 
