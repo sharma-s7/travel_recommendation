@@ -13,7 +13,7 @@
 ## 🛠️ Tech Stack
 
 - **HTML5** for semantic structure
-- **CSS3** with Flexbox/Grid for layout and styling
+- **CSS3** with Flex for layout and styling
 - **Vanilla JavaScript** for interactivity and search logic
 
 
