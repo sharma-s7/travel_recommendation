@@ -5,6 +5,7 @@
 ## ✨ Features
 
 - 🔎 **Search Places**: Type and filter destinations in real-time
+- 🟢 **Live Data**: Fetches travel information from a JSON API
 - 📄 **About Page**: Learn more about the platform and its mission
 - 📬 **Contact Page**: Submit inquiries via a simple form
 - 📱 **Responsive Design**: Works smoothly across desktop and mobile
