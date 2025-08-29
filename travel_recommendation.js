@@ -15,6 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(err => console.error('Failed to load data:', err));
 
+  // Timezone mapping
+  const timeZoneMap = {
+    'Australia': 'Australia/Sydney',
+    'Japan': 'Asia/Tokyo',
+    'Brazil': 'America/Sao_Paulo',
+    'Colombia': 'America/Bogota',
+    'India': 'Asia/Kolkata',
+    'French Polynesia': 'Pacific/Tahiti'
+  };
+
+
   // Search handler
   searchBtn.addEventListener('click', () => {
   const keyword = searchInput.value.trim().toLowerCase();
@@ -66,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
+ 
   // Display results
   if (matches.length === 0) {
     resultDiv.innerHTML = `<p>No results found for "${keyword}".</p>`;
@@ -74,13 +85,56 @@ document.addEventListener('DOMContentLoaded', () => {
     matches.forEach(item => {
       const card = document.createElement('div');
       card.className = 'recommendation-card';
-      card.innerHTML = `
-        <img src="${item.imageUrl}" alt="${item.name}" />
-        <h3>${item.name}</h3>
-        <p>${item.description}</p>
-        <button class="visit-btn">Visit</button>
-      `;
-      resultDiv.appendChild(card);
+      // Get local time for item's country
+        const countryFromName = item.name.split(',').pop().trim();
+
+  // Normalize country name if needed
+  const normalizeCountryName = name => {
+    const map = {
+      'JP': 'Japan',
+      'AU': 'Australia',
+      'BR': 'Brazil',
+      'CO': 'Colombia',
+      'IN': 'India',
+      '日本': 'Japan',
+      'Brasil': 'Brazil',
+      'French Polynesia': 'French Polynesia'
+    };
+    return map[name] || name;
+  };
+
+    const timeZone = timeZoneMap[normalizeCountryName(countryFromName)];
+
+  // Set up card HTML first with empty <h3>
+  card.innerHTML = `
+    <img src="${item.imageUrl}" alt="${item.name}" />
+    <h3></h3>
+    <p>${item.description}</p>
+    <button class="visit-btn">Visit</button>
+  `;
+  resultDiv.appendChild(card);
+
+  // Now safely select <h3> and update it
+  const title = card.querySelector('h3');
+
+  const updateTime = () => {
+    if (timeZone) {
+      const options = {
+        timeZone,
+        hour12: true,
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+      };
+      const localTime = new Date().toLocaleTimeString('en-US', options);
+      title.innerHTML = `${item.name} – ${localTime}`;
+    } else {
+      title.textContent = item.name;
+    }
+  };
+
+  updateTime();
+  setInterval(updateTime, 1000); // Update every second
 
       card.querySelector('.visit-btn').addEventListener('click', () => {
         alert(`You clicked Visit for ${item.name}`);
