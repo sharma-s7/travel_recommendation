@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Roava</title>
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="travel_recommendation.css">
         <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
         <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
@@ -11,6 +12,12 @@
 <body>
     <nav>
   <h1><i>Roava</i></h1>
+  <!-- Burger Menu -->
+    <div class="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   <ul class="nav-links">
     <li><a href="index.html" id="home">Home</a></li>
     <li><a href="about_us.html" id="about">About Us</a></li>
@@ -63,6 +70,13 @@ Founded by passionate explorers and seasoned travel planners, our mission is sim
   <a href="https://youtube.com" target="_blank"><i class='bxl  bx-youtube'  ></i>  </a>
 </div>
 
+<script>
+  const burger = document.querySelector('.burger');
+  const navLinks = document.querySelector('.nav-links');
 
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('nav-active');
+  });
+</script>
 </body>
 </html>
