@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
  
   // Display results
   if (matches.length === 0) {
-    resultDiv.innerHTML = `<p>No results found for "${keyword}".</p>`;
+    alert(`No Results found for "${keyword}"`);
   } else {
     matches.forEach(item => {
       const card = document.createElement('div');
