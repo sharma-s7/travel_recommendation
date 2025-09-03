@@ -49,6 +49,15 @@ nav a {
   color: #fff;
   font-weight: bold;
   font-size: 16px;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+nav a:hover {
+  background: rgba(0, 149, 255, 0.8);
+  border: 1px solid #fff;
+  transform: scale(1.5);
+  font-size: 18px;
 }
 
 .search-bar {
@@ -366,6 +375,7 @@ nav a {
   height: 3px;
   background-color: white;
   border-radius: 2px;
+  transition: all.3s ease-in-out;
 }
 
 /* Responsive layout */
@@ -382,7 +392,8 @@ nav a {
     flex-direction: column;
     width: 100%;
     display: none;
-    padding: 10px 0;
+    padding: 5rem 1.5rem;
+    gap: 1.7rem !important;
   }
 
   .nav-links li {
@@ -391,16 +402,43 @@ nav a {
     padding: 10px 2px;
     font-style: italic;
   }
-  .nav-links li:hover {
-    background-color: #007BFF;
-  }
 
   .burger {
-    display: flex;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 10;
 
+}
+
+.burger span {
+  height: 4px;
+  width: 100%;
+  background: #fff;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+
+}
+/* Centered and balanced cross */
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.burger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
   .nav-active {
     display: flex;
+    transition: all 0.3s ease;
   }
 
   .search-bar {
